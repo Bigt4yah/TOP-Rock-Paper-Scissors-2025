@@ -53,8 +53,8 @@ function playGame(){
         let computerChoice = getComputerChoice();
         let humanChoice = getHumanChoice();
     
-        let loseMessage = "You lose!" + computerChoice + " beats " + humanChoice;
-        let winMessage = "You win!" + humanChoice + " beats " + computerChoice;
+        let loseMessage = "You lose! " + computerChoice + " beats " + humanChoice;
+        let winMessage = "You win! " + humanChoice + " beats " + computerChoice;
     
         if ((computerChoice === "ROCK" && humanChoice === "SCISSORS") || 
         (computerChoice === "PAPER" && humanChoice === "ROCK") ||
@@ -65,14 +65,6 @@ function playGame(){
             console.log(winMessage);
             humanScore += 1;
         }
-
-           // if (computerChoice === "ROCK" && humanChoice === "SCISSORS"){
-            //     console.log(loseMessage);
-            // } else if (computerChoice === "PAPER" && humanChoice === "ROCK"){
-            //     console.log(loseMessage)
-            // } else if (computerChoice === "SCISSORS" && humanChoice === "PAPER") {
-            //     console.log(loseMessage);
-            // }
 
     }
 
