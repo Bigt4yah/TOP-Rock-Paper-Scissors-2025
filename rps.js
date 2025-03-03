@@ -12,7 +12,7 @@
 */
 
 function getComputerChoice() {
-    let randomNumber = Math.random;
+    let randomNumber = Math.random();
     let computerChoice;  
 
     if (randomNumber <= 0.32) {
@@ -61,16 +61,24 @@ function playGame(){
         (computerChoice === "SCISSORS" && humanChoice === "PAPER")) {
             console.log(loseMessage);
             computerScore += 1;
-        } else {
+            return "Comp";
+        } else if (computerChoice === humanChoice){
+            console.log("Draw! You both picked " + humanChoice + ". This round doesn't count!");
+            return "Draw";
+        } 
+        else {
             console.log(winMessage);
             humanScore += 1;
+            return "Human";
         }
 
     }
 
     while (roundCount < 5){
-        playRound();
-        ++roundCount;
+        let currentRound = playRound();
+        if (currentRound != "Draw") {
+            ++roundCount;
+        } 
         if (computerScore >= 3 || humanScore >= 3){
             break;
         } 
