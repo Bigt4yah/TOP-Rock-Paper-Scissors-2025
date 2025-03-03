@@ -26,6 +26,10 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function capitalizeResponse(currentResponse){
+    return currentResponse.replace(currentResponse.at(0),currentResponse.at(0).toUpperCase()).at(0) + currentResponse.toLowerCase().slice(1);
+}
+
 function getHumanChoice() {
     let promptMessage = "Rock, Paper, Scissors!";
     let humanChoice = prompt(promptMessage);
@@ -53,22 +57,27 @@ function playGame(){
         let computerChoice = getComputerChoice();
         let humanChoice = getHumanChoice();
     
-        let loseMessage = "You lose! " + computerChoice + " beats " + humanChoice;
-        let winMessage = "You win! " + humanChoice + " beats " + computerChoice;
+        let loseMessage = "You lose! " + capitalizeResponse(computerChoice) + " beats " + capitalizeResponse(humanChoice);
+        let winMessage = "You win! " + capitalizeResponse(humanChoice) + " beats " + capitalizeResponse(computerChoice);
     
         if ((computerChoice === "ROCK" && humanChoice === "SCISSORS") || 
         (computerChoice === "PAPER" && humanChoice === "ROCK") ||
         (computerChoice === "SCISSORS" && humanChoice === "PAPER")) {
-            console.log(loseMessage);
             computerScore += 1;
+            console.log(loseMessage);
+            let alertMessage = loseMessage + '. Current score: ' + humanScore + ' - ' + computerScore;
+            alert(alertMessage);            
             return "Comp";
         } else if (computerChoice === humanChoice){
-            console.log("Draw! You both picked " + humanChoice + ". This round doesn't count!");
+            console.log("Draw! You both picked " + capitalizeResponse(humanChoice) + ". This round doesn't count!");
+            alert("Draw! You both picked " + capitalizeResponse(humanChoice) + ". This round doesn't count!");
             return "Draw";
         } 
         else {
-            console.log(winMessage);
             humanScore += 1;
+            console.log(winMessage);
+            let alertMessage = winMessage + '. Current score: ' + humanScore + ' - ' + computerScore;
+            alert(alertMessage);            
             return "Human";
         }
 
@@ -86,8 +95,10 @@ function playGame(){
 
     if (computerScore > humanScore) {
         console.log("The computer wins!");
+        alert("The computer wins!" + " End score: " + humanScore + " - " + computerScore);
     } else {
         console.log("You win!");
+        alert("You win!" + " End score: " + humanScore + " - " + computerScore);
     }
 }
 
